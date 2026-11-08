@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de atención de Peticiones, Quejas, Reclamos y Sugerencias de Mis Raíces.">
+    <title>Mis Raíces | Sistema PQRS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <a href="#" class="brand" onclick="irInicio(); return false;">
+            <span class="brand-icon">🌿</span>
+            <span>
+                <strong>Mis Raíces</strong>
+                <small>Mercado de Origen</small>
+            </span>
+        </a>
+        <span class="topbar-tag">Frutos secos y especias</span>
+    </header>
+
+    <main>
+        <!-- PORTADA -->
+        <section id="inicio" class="pantalla activa">
+            <div class="hero">
+                <div class="hero-image">
+                    <img src="img.png" alt="Mis Raíces, frutos secos y productos naturales">
+                </div>
+                <div class="hero-content">
+                    <span class="eyebrow">NATURALMENTE DELICIOSO</span>
+                    <h1>Bienvenido a <span>Mis Raíces</span></h1>
+                    <p>
+                        Cuidamos cada detalle para ofrecerte frutos secos, semillas,
+                        especias y productos de calidad. Tu opinión nos ayuda a crecer.
+                    </p>
+                    <div class="hero-tags">
+                        <span>🌰 Frutos secos</span>
+                        <span>🌱 Semillas</span>
+                        <span>🍇 Frutas deshidratadas</span>
+                        <span>🫙 Especias</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="mostrarPantalla('seleccion')">
+                        Ingresar al sistema <span>→</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="intro-section">
+                <div>
+                    <span class="eyebrow">ESTAMOS PARA ESCUCHARTE</span>
+                    <h2>Tu experiencia es nuestra prioridad</h2>
+                    <p>
+                        A través de nuestro sistema PQRS puedes registrar peticiones,
+                        quejas, reclamos y sugerencias sobre nuestros productos,
+                        presentaciones, atención y servicio.
+                    </p>
+                </div>
+                <div class="intro-features">
+                    <article class="feature-card">
+                        <span>🥜</span>
+                        <h3>Productos a granel</h3>
+                        <p>Consulta pesos, precios, disponibilidad y calidad.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span>🎁</span>
+                        <h3>Productos empacados</h3>
+                        <p>Comparte tus inquietudes sobre empaques y pedidos.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span>💚</span>
+                        <h3>Atención cercana</h3>
+                        <p>Realiza seguimiento a tus solicitudes y respuestas.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SELECCIÓN DE ACCESO -->
+        <section id="seleccion" class="pantalla">
+            <div class="section-heading">
+                <span class="eyebrow">SISTEMA DE ATENCIÓN</span>
+                <h2>¿Cómo deseas ingresar?</h2>
+                <p>Selecciona el tipo de acceso que corresponde a tu perfil.</p>
+            </div>
+
+            <div class="access-grid">
+                <article class="access-card">
+                    <div class="access-icon">🛍️</div>
+                    <h3>Cliente</h3>
+                    <p>Registra tus solicitudes y consulta las respuestas de nuestro equipo.</p>
+                    <button class="btn btn-primary" onclick="mostrarPantalla('cliente-acceso')">
+                        Acceso de cliente
+                    </button>
+                </article>
+
+                <article class="access-card">
+                    <div class="access-icon">👩‍💼</div>
+                    <h3>Personal interno</h3>
+                    <p>Gestiona solicitudes, actualiza estados y registra soluciones.</p>
+                    <button class="btn btn-secondary" onclick="mostrarPantalla('personal-acceso')">
+                        Acceso de personal
+                    </button>
+                </article>
+            </div>
+
+            <button class="btn btn-light" onclick="irInicio()">← Volver al inicio</button>
+        </section>
+
+        <!-- ACCESO CLIENTE -->
+        <section id="cliente-acceso" class="pantalla">
+            <div class="auth-card">
+                <button class="back-link" onclick="mostrarPantalla('seleccion')">← Volver</button>
+                <div class="auth-icon">🛍️</div>
+                <h2>Acceso de clientes</h2>
+                <p>Ingresa a tu cuenta o crea una nueva.</p>
+
+                <div class="tabs">
+                    <button id="tab-login" class="tab active" onclick="cambiarTabCliente('login')">Iniciar
+                        sesión</button>
+                    <button id="tab-registro" class="tab" onclick="cambiarTabCliente('registro')">Registrarme</button>
+                </div>
+
+                <form id="form-login-cliente" autocomplete="off">
+                    <label for="login-email">Correo electrónico</label>
+                    <input id="login-email" type="email" placeholder="correo@ejemplo.com" autocomplete="off" required>
+
+                    <label for="login-password">Contraseña</label>
+                    <input id="login-password" type="password" placeholder="Ingresa tu contraseña"
+                        autocomplete="new-password" required>
+
+                    <button class="btn btn-primary btn-full" type="submit">Ingresar</button>
+                    <p id="mensaje-login-cliente" class="mensaje"></p>
+                </form>
+
+                <form id="form-registro-cliente" class="oculto" autocomplete="off">
+                    <label for="registro-nombre">Nombre completo</label>
+                    <input id="registro-nombre" type="text" placeholder="Tu nombre completo" required>
+
+                    <label for="registro-email">Correo electrónico</label>
+                    <input id="registro-email" type="email" placeholder="correo@ejemplo.com" required>
+
+                    <label for="registro-telefono">Teléfono</label>
+                    <input id="registro-telefono" type="tel" placeholder="Número de contacto" required>
+
+                    <label for="registro-password">Contraseña</label>
+                    <input id="registro-password" type="password" minlength="6" placeholder="Mínimo 6 caracteres"
+                        required>
+
+                    <button class="btn btn-primary btn-full" type="submit">Crear cuenta</button>
+                    <p id="mensaje-registro-cliente" class="mensaje"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- ACCESO PERSONAL -->
+        <section id="personal-acceso" class="pantalla">
+            <div class="auth-card">
+                <button class="back-link" onclick="mostrarPantalla('seleccion')">← Volver</button>
+                <div class="auth-icon">🔐</div>
+                <h2>Acceso del personal</h2>
+                <p>Ingresa con tus credenciales de trabajo.</p>
+
+                <form id="form-login-admin" autocomplete="off">
+                    <label for="admin-email">Correo institucional</label>
+                    <input id="admin-email" type="email" placeholder="Correo del personal" autocomplete="off" required>
+
+                    <label for="admin-password">Contraseña</label>
+                    <input id="admin-password" type="password" placeholder="Contraseña" autocomplete="new-password"
+                        required>
+
+                    <button class="btn btn-secondary btn-full" type="submit">Ingresar al panel</button>
+                    <p id="mensaje-login-admin" class="mensaje"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- PANEL CLIENTE -->
+        <section id="panel-cliente" class="pantalla dashboard">
+            <div class="dashboard-header">
+                <div>
+                    <span class="eyebrow">PORTAL DEL CLIENTE</span>
+                    <h2>Hola, <span id="nombre-cliente-panel">cliente</span> 👋</h2>
+                    <p>Consulta tus solicitudes y mantente al tanto de nuestras respuestas.</p>
+                </div>
+                <button class="btn btn-light" onclick="cerrarSesion()">Cerrar sesión</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card"><span>📋</span>
+                    <div><strong id="total-cliente">0</strong><small>Mis solicitudes</small></div>
+                </div>
+                <div class="stat-card"><span>⏳</span>
+                    <div><strong id="pendientes-cliente">0</strong><small>En proceso</small></div>
+                </div>
+                <div class="stat-card"><span>✅</span>
+                    <div><strong id="resueltas-cliente">0</strong><small>Resueltas</small></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <div>
+                        <span class="eyebrow">NUEVA SOLICITUD</span>
+                        <h3>Cuéntanos cómo podemos ayudarte</h3>
+                    </div>
+                </div>
+
+                <form id="form-nueva-pqrs" class="form-grid">
+                    <div>
+                        <label for="pqrs-tipo">Tipo de solicitud</label>
+                        <select id="pqrs-tipo" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Petición">Petición</option>
+                            <option value="Queja">Queja</option>
+                            <option value="Reclamo">Reclamo</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="pqrs-producto">Producto o servicio relacionado</label>
+                        <select id="pqrs-producto" required>
+                            <option value="">Selecciona una opción</option>
+                            <option>Almendras</option>
+                            <option>Nueces</option>
+                            <option>Pistachos</option>
+                            <option>Maní</option>
+                            <option>Semillas</option>
+                            <option>Frutas deshidratadas</option>
+                            <option>Especias</option>
+                            <option>Mezclas de frutos secos</option>
+                            <option>Atención al cliente</option>
+                            <option>Pedidos y entregas</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="pqrs-presentacion">Presentación</label>
+                        <select id="pqrs-presentacion" required>
+                            <option value="">Selecciona una opción</option>
+                            <option>A granel</option>
+                            <option>Empacado</option>
+                            <option>No aplica</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="pqrs-asunto">Asunto</label>
+                        <input id="pqrs-asunto" type="text" placeholder="Escribe el asunto" required>
+                    </div>
+                    <div class="campo-completo">
+                        <label for="pqrs-descripcion">Descripción de la solicitud</label>
+                        <textarea id="pqrs-descripcion" rows="5"
+                            placeholder="Describe detalladamente tu petición, queja, reclamo o sugerencia..."
+                            required></textarea>
+                    </div>
+                    <div class="campo-completo">
+                        <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+                        <p id="mensaje-nueva-pqrs" class="mensaje"></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <div>
+                        <span class="eyebrow">SEGUIMIENTO</span>
+                        <h3>Mis registros PQRS</h3>
+                        <p>Todos tus registros permanecen guardados. Los filtros solo cambian lo que se muestra.</p>
+                    </div>
+                </div>
+                <div class="filters">
+                    <input id="filtro-cliente-texto" type="search" placeholder="Buscar por radicado o asunto...">
+                    <select id="filtro-cliente-estado">
+                        <option value="">Todos los estados</option>
+                        <option>Recibida</option>
+                        <option>En revisión</option>
+                        <option>En proceso</option>
+                        <option>Respondida</option>
+                        <option>Resuelta</option>
+                    </select>
+                    <button class="btn btn-light" onclick="limpiarFiltrosCliente()">Limpiar filtros</button>
+                </div>
+                <div id="lista-pqrs-cliente" class="records-list"></div>
+            </div>
+        </section>
+
+        <!-- PANEL PERSONAL -->
+        <section id="panel-admin" class="pantalla dashboard">
+            <div class="dashboard-header">
+                <div>
+                    <span class="eyebrow">GESTIÓN INTERNA</span>
+                    <h2>Panel de solicitudes</h2>
+                    <p>Administra los registros y brinda respuestas a los clientes.</p>
+                </div>
+                <button class="btn btn-light" onclick="cerrarSesion()">Cerrar sesión</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card"><span>📋</span>
+                    <div><strong id="total-admin">0</strong><small>Total de registros</small></div>
+                </div>
+                <div class="stat-card"><span>⏳</span>
+                    <div><strong id="pendientes-admin">0</strong><small>Pendientes</small></div>
+                </div>
+                <div class="stat-card"><span>✅</span>
+                    <div><strong id="resueltas-admin">0</strong><small>Resueltos</small></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <div>
+                        <span class="eyebrow">BASE DE SOLICITUDES</span>
+                        <h3>Registros PQRS</h3>
+                        <p>Se muestra la información completa de cada registro. Puedes filtrar sin eliminar información.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <input id="filtro-admin-texto" type="search" placeholder="Buscar por radicado, cliente o asunto...">
+                    <select id="filtro-admin-tipo">
+                        <option value="">Todos los tipos</option>
+                        <option>Petición</option>
+                        <option>Queja</option>
+                        <option>Reclamo</option>
+                        <option>Sugerencia</option>
+                    </select>
+                    <select id="filtro-admin-estado">
+                        <option value="">Todos los estados</option>
+                        <option>Recibida</option>
+                        <option>En revisión</option>
+                        <option>En proceso</option>
+                        <option>Respondida</option>
+                        <option>Resuelta</option>
+                    </select>
+                    <button class="btn btn-light" onclick="limpiarFiltrosAdmin()">Limpiar filtros</button>
+                </div>
+
+                <div id="lista-pqrs-admin" class="records-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-brand">🌿 Mis Raíces</div>
+        <p>Mercado de Origen · Frutos secos y especias</p>
+        <small>Tu opinión nos ayuda a crecer. Sistema de atención PQRS.</small>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
